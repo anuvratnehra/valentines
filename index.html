@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Samaira ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+body{
+  margin:0;
+  font-family:'Poppins', system-ui, sans-serif;
+  background:white;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:#222;
+  text-align:center;
+  transition: background 1.2s ease, color 1.2s ease;
+}
+
+/* ROMANTIC MODE */
+body.romantic {
+  background: linear-gradient(
+    120deg,
+    #f7a1c4,   /* richer pink */
+    #f58bb5,   /* warm rosy pink */
+    #fbc2d9,   /* soft blush */
+    #f9a8c8    /* romantic pink glow */
+  );
+  background-size: 300% 300%;
+  color:white;
+  animation: romanticGradient 28s ease-in-out infinite;
+}
+
+@keyframes romanticGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card{
+  background:rgba(255,255,255,0.18);
+  padding:40px;
+  border-radius:28px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+  max-width:420px;
+  animation:fade 1.2s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* HEADINGS */
+h1,h2{
+  font-weight:400;
+  letter-spacing:0.5px;
+}
+
+/* SLIDESHOW */
+.slideshow{
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.slideshow img{
+  width:100%;
+  transition: 
+    opacity 1.4s ease-in-out,
+    transform 6s ease;
+  transform: scale(1);
+}
+
+.slideshow img.zoom {
+  transform: scale(1.06);
+}
+
+button{
+  margin-top:18px;
+  padding:14px 32px;
+  border:none;
+  border-radius:35px;
+  font-size:1.05em;
+  cursor:pointer;
+
+  background: linear-gradient(135deg, #ffd1e3, #ffb3cc);
+  color:#da8fab;
+
+  box-shadow: 0 8px 20px rgba(255, 105, 150, 0.35);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+button:hover{
+  transform: scale(1.07);
+  box-shadow: 0 12px 28px rgba(255, 105, 150, 0.5);
+}
+
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  font-size:22px;
+  pointer-events:none;
+  animation:pop 1.2s ease-out forwards;
+}
+
+@keyframes pop{
+  0%{transform:translate(0,0) scale(1);opacity:1}
+  100%{transform:translate(var(--x),var(--y)) scale(1.6);opacity:0}
+}
+
+/* NO BUTTON CHAOS */
+@keyframes shake {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-4px,4px); }
+  50% { transform: translate(4px,-4px); }
+  75% { transform: translate(-4px,-4px); }
+  100% { transform: translate(0,0); }
+}
+
+.shake {
+  animation: shake 0.3s infinite;
+}
+
+.flash {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,0,0,0.35);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:.8;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+.note {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+  margin-top: 25px;
+  line-height: 1.6;
+}
+
+.note.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.page{display:none}
+#page1{display:block}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop preload="auto">
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="noSound1" src="faah.mp3" preload="auto"></audio>
+<audio id="noSound2" src="hellnah.mp3" preload="auto"></audio>
+
+<!-- PAGE 1 -->
+<div class="card page" id="page1">
+  <h1>Important Question</h1>
+  <p>I need a serious answer...</p>
+  <p>Will you be my Valentine?</p>
+
+  <div style="position:relative; height:160px;">
+    <button onclick="celebrateYes()">YES </button>
+
+    <button id="noBtn" style="position:absolute; left:190px; top:0;">
+      NO
+    </button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card page" id="page2">
+  <div class="slideshow">
+    <img id="slide" src="us1.jpeg">
+  </div>
+  <p>From moments to memories 💫</p>
+  <button onclick="nextPage(3)">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card page" id="page3">
+
+  <div class="note" id="loveNote">
+    <p><strong>Samaira, my darling,</strong></p>
+
+    <p>
+      I know we’ve had a few hiccups lately. But through all of it, you’re still the only person I
+      want to put effort into, not because I have to, but because my heart chooses you.
+    </p>
+
+    <p>
+      You’re the one I want to share things with, fall asleep talking to, and wake up thinking about. Now and always.
+    </p>
+
+    <p>
+      I want to celebrate this week of love with you, our first Valentine’s,
+      and hopefully the first of many.
+    </p>
+
+    <p>
+      I love you, my Chuhiya (and my Chidiya) ❤️
+    </p>
+  </div>
+
+  <h1 style="margin-top:30px;">🎬 Our Valentine Date</h1>
+
+  <p>
+    Online movie night together 🍿<br>
+    Same time, same snacks
+  </p>
+
+  <h2>Just us ❤️</h2>
+
+</div>
+
+
+<script>
+
+const music = document.getElementById("music");
+let musicStarted = false;
+
+const photos=["us1.jpeg","us2.jpeg","us3.jpeg"];
+let index=0;
+const slide=document.getElementById("slide");
+
+setInterval(()=>{
+  slide.classList.remove("zoom");
+  slide.style.opacity=0;
+
+  setTimeout(()=>{
+    index=(index+1)%photos.length;
+    slide.src=photos[index];
+    slide.style.opacity=1;
+    slide.classList.add("zoom");
+  },600);
+},9000);
+
+/* PAGE SWITCH */
+function nextPage(n){
+  document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+  document.getElementById("page" + n).style.display = "block";
+
+  if (!musicStarted) {
+    music.volume = 0.6;
+    music.play().catch(()=>{});
+    musicStarted = true;
+  }
+
+  // show note softly on page 3
+  if (n === 3) {
+    setTimeout(() => {
+      document.getElementById("loveNote")?.classList.add("show");
+    }, 900);
+  }
+}
+
+
+
+/* YES */
+function celebrateYes(){
+  music.muted = false;
+  document.body.classList.add("romantic");
+
+  for(let i=0;i<36;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.innerHTML=Math.random()>.5?"❤️":"✨";
+
+    c.style.setProperty("--x",(Math.random()-0.5)*300+"px");
+    c.style.setProperty("--y",(Math.random()-1)*250+"px");
+    c.style.left="50%";
+    c.style.top="60%";
+
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),1200);
+  }
+
+  startHearts();
+  setTimeout(()=>nextPage(2),650);
+}
+
+/* HEARTS */
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*22+14+"px";
+  h.style.animationDuration=Math.random()*3+4+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+
+function startHearts(){
+  setInterval(createHeart,350);
+}
+
+/* NO CHAOS */
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("click",()=>{
+  const sounds=[noSound1,noSound2];
+  const s=sounds[Math.floor(Math.random()*sounds.length)];
+  s.currentTime=0;
+  s.play().catch(()=>{});
+
+  noBtn.classList.add("shake");
+  setTimeout(()=>noBtn.classList.remove("shake"),600);
+
+  const flash=document.createElement("div");
+  flash.className="flash";
+  document.body.appendChild(flash);
+  setTimeout(()=>flash.remove(),300);
+
+  moveNo();
+});
+
+function moveNo(){
+  const range=120;
+  let x=noBtn.offsetLeft+(Math.random()-0.5)*range;
+  let y=noBtn.offsetTop+(Math.random()-0.5)*range;
+
+  x=Math.max(20,Math.min(window.innerWidth-noBtn.offsetWidth-20,x));
+  y=Math.max(20,Math.min(window.innerHeight-noBtn.offsetHeight-20,y));
+
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+}
+</script>
+
+</body>
+</html>
